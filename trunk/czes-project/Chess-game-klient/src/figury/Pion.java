@@ -1,4 +1,4 @@
-package Figury;
+package figury;
 
 public class Pion {
 
