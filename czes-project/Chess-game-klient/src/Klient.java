@@ -1,4 +1,36 @@
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RMISecurityManager;
+import java.rmi.RemoteException;
 
 public class Klient {
 
+    public static void main(String[] args) {
+
+        if (args.length != 1) {
+            System.out
+                    .println("parametry: //host/nazwa");
+            System.exit(0);
+        }
+        String nazwa = args[0];
+
+        if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new RMISecurityManager());
+        }
+
+        Interfejs interfejs = null;
+
+        try {
+            interfejs = (Interfejs) Naming.lookup(nazwa);
+            String wynik = interfejs.obliczStara();
+            System.out.println("Twoja stara " + wynik);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
