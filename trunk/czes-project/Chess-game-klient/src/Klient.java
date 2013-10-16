@@ -24,7 +24,7 @@ public class Klient {
         try {
             interfejs = (Interfejs) Naming.lookup(nazwa);
             String wynik = interfejs.obliczStara();
-            System.out.println("Twoja stara " + wynik);
+            System.out.println("Polaczono " + wynik);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (RemoteException e) {
