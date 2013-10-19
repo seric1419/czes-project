@@ -36,10 +36,9 @@ public class Szachownica {
 		
 	}
 
-	public boolean sprawdzRuch(int x, int y) {
-		Pole pole_start = pola.get(x);
-		Pole pole_fin = pola.get(y);
-		ArrayList<Integer> tablica = sprawdzanePola(pole_start);
+	public boolean sprawdzRuch(int x1, int x2) {
+		Pole pole_start = pola.get(x1);
+		Pole pole_fin = pola.get(x2);
 		
 		////////////////////////////////////////////////////
 		////////////////////////////PIONEK
@@ -149,9 +148,27 @@ public class Szachownica {
 				
 			}
 					
+		} else{
+			
+			////////////////////////////////////////////////////
+			////////////////////////////INNE FIGURY
+			/////////////////////////////////////////////////
+			ArrayList<Integer> tablica = sprawdzanePola(pole_start);
+			for(int i = 1; i < tablica.size(); i++)
+			{
+				int temp = tablica.get(i-1);
+				
+				if(pole_fin == pola.get(temp)){ // sprawdzamy czy pole docelowe jest na tablicy dostepnych
+					
+					if(!pole_fin.pobierzFigure().pobierzKolor().equals(pola.get(temp).pobierzFigure().pobierzKolor())){ //sprawdzamy czy figury maja takie same kolory
+						return true;
+					} else return false;
+				}
+			}
 		}
-		// Tutaj jeszcze kilka rzeczy do sprawdzenia czy krol nie wystawi sie na szach czy mozliwa roszada, sprawdzanie reszty figur
-		return true;
+			
+		// Tutaj jeszcze kilka rzeczy do sprawdzenia czy krol nie wystawi sie na szach czy mozliwa roszada
+		return false;
 
 	}
 }
