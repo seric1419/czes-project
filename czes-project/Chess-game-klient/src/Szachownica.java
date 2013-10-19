@@ -3,6 +3,7 @@ import java.util.List;
 
 import figury.Figura;
 import figury.PustaFigura;
+import figury.Kolor;
 import commons.Constants;
 
 public class Szachownica {
@@ -30,13 +31,126 @@ public class Szachownica {
 		return pole_start.pobierzFigure().mozliweRuchy(pole_start.pobierzX(),
 				pole_start.pobierzY());
 	}
+	// zamienia pionek na inna figure w polu z argumentu
+	public void ZamienPionek(Pole pole){
+		
+	}
 
-	public boolean sprawdzRuch(int x) {
+	public boolean sprawdzRuch(int x, int y) {
 		Pole pole_start = pola.get(x);
+		Pole pole_fin = pola.get(y);
 		ArrayList<Integer> tablica = sprawdzanePola(pole_start);
-		// Tutaj jeszcze kilka rzeczy do sprawdzenia, czy taki sam kolor maja
-		// pionki, czy jest to pion, czy krol nie wystawi sie na szach, czy pion
-		// nie przekroczy granicy, czy mozliwa roszada
+		
+		////////////////////////////////////////////////////
+		////////////////////////////PIONEK
+		/////////////////////////////////////////////////
+		if(pole_start.pobierzFigure().czyPionek()) // czy jest pionkiem
+		{
+			if(pole_start.pobierzFigure().pobierzKolor().equals(Kolor.BIALY)){ // czy jest koloru bialego
+				
+				if(pole_start.pobierzY() == 2){	// czy jest na przedostatnim wierszu
+	
+					if(pole_fin.pobierzY() == 1){
+						
+						if(pole_fin.pobierzX() == pole_start.pobierzX()){ // czy chcemy sie przemiescic na wprost
+						
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // czy na wprost nie ma pionka
+								ZamienPionek(pole_start); // zamieniamy pionek w starcie, bo dopiero po return zamienia on sie miejscami
+								return true;
+							} else return false;
+							
+						} else if(pole_fin.pobierzX() == pole_start.pobierzX() + 1){ // jezeli idziemy w prawo
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.CZARNY)){ // jezeli jest tam przeciwnik
+								ZamienPionek(pole_start); // zamieniamy pionek w starcie, bo dopiero po return zamienia on sie miejscami
+								return true;
+							} else return false;
+						
+						} else if(pole_fin.pobierzX() == pole_start.pobierzX() - 1){ // jezeli idziemy w lewo
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.CZARNY)){ // jezeli jest tam przeciwnik
+								ZamienPionek(pole_start); // zamieniamy pionek w starcie, bo dopiero po return zamienia on sie miejscami
+								return true;
+							} else return false; 
+						} else return false; // jezeli nie idziemy ani na bok, ani na wprost 
+					} else return false; // jesli wybralismy inny wiersz docelowy niz kolejny
+				
+				} else if(pole_start.pobierzY() > 2){
+					
+					if(pole_fin.pobierzY() == pole_start.pobierzY() - 1){
+						
+						if(pole_fin.pobierzX() == pole_start.pobierzX()){ // czy chcemy sie przemiescic na wprost
+						
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // czy na wprost nie ma pionka
+								return true;
+							} else return false;
+							
+						} else if(pole_fin.pobierzX() == pole_start.pobierzX() + 1){ // jezeli idziemy w prawo
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.CZARNY)){ // jezeli jest tam przeciwnik
+								return true;
+							} else return false;
+						
+						} else if(pole_fin.pobierzX() == pole_start.pobierzX() - 1){ // jezeli idziemy w lewo
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.CZARNY)){ // jezeli jest tam przeciwnik
+								return true;
+							} else return false; 
+						} else return false; // jezeli nie idziemy ani na bok, ani na wprost 
+					} else return false; // jesli wybralismy inny wiersz docelowy niz kolejny
+					
+				} // TU TWOJE MIEJSCE NA OBSLUGE BLEDU!
+			} else if(pole_start.pobierzFigure().pobierzKolor().equals(Kolor.BIALY)){
+				
+				if(pole_start.pobierzY() == 7){	// czy jest na przedostatnim wierszu
+					
+					if(pole_fin.pobierzY() == 8){
+						
+						if(pole_fin.pobierzX() == pole_start.pobierzX()){ // czy chcemy sie przemiescic na wprost
+						
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // czy na wprost nie ma pionka
+								ZamienPionek(pole_start); // zamieniamy pionek w starcie, bo dopiero po return zamienia on sie miejscami
+								return true;
+							} else return false;
+							
+						} else if(pole_fin.pobierzX() == pole_start.pobierzX() + 1){ // jezeli idziemy w prawo
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.BIALY)){ // jezeli jest tam przeciwnik
+								ZamienPionek(pole_start); // zamieniamy pionek w starcie, bo dopiero po return zamienia on sie miejscami
+								return true;
+							} else return false;
+						
+						} else if(pole_fin.pobierzX() == pole_start.pobierzX() - 1){ // jezeli idziemy w lewo
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.BIALY)){ // jezeli jest tam przeciwnik
+								ZamienPionek(pole_start); // zamieniamy pionek w starcie, bo dopiero po return zamienia on sie miejscami
+								return true;
+							} else return false; 
+						} else return false; // jezeli nie idziemy ani na bok, ani na wprost 
+					} else return false; // jesli wybralismy inny wiersz docelowy niz kolejny
+				
+				} else if(pole_start.pobierzY() < 7){
+					
+					if(pole_fin.pobierzY() == pole_start.pobierzY() + 1){
+						
+						if(pole_fin.pobierzX() == pole_start.pobierzX()){ // czy chcemy sie przemiescic na wprost
+						
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // czy na wprost nie ma pionka
+								return true;
+							} else return false;
+							
+						} else if(pole_fin.pobierzX() == pole_start.pobierzX() + 1){ // jezeli idziemy w prawo
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.BIALY)){ // jezeli jest tam przeciwnik
+								return true;
+							} else return false;
+						
+						} else if(pole_fin.pobierzX() == pole_start.pobierzX() - 1){ // jezeli idziemy w lewo
+							if(pole_fin.pobierzFigure().pobierzKolor().equals(Kolor.BIALY)){ // jezeli jest tam przeciwnik
+								return true;
+							} else return false; 
+						} else return false; // jezeli nie idziemy ani na bok, ani na wprost 
+					} else return false; // jesli wybralismy inny wiersz docelowy niz kolejny
+					
+				} // TU TWOJE MIEJSCE NA OBSLUGE BLEDU!
+				
+			}
+					
+		}
+		// Tutaj jeszcze kilka rzeczy do sprawdzenia czy krol nie wystawi sie na szach czy mozliwa roszada, sprawdzanie reszty figur
 		return true;
 
 	}

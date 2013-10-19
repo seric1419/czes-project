@@ -14,12 +14,12 @@ public class Pion extends Figura {
 		int nowa;
 		if (kolor.equals(Kolor.CZARNY)) {
 			if (x + 1 < 9) {
-				nowa = 10 * (x + 1) + y;
+				nowa = 8 * (x + 1) + y;
 				tablica.add(nowa);
 			}
 		} else if (kolor.equals(Kolor.BIALY))
 			if (x - 1 > 0) {
-				nowa = 10 * (x - 1) + y;
+				nowa = 8 * (x - 1) + y;
 				tablica.add(nowa);
 			}
 		return tablica;
@@ -31,20 +31,20 @@ public class Pion extends Figura {
 
 		if (kolor.equals(Kolor.CZARNY)) {
 			if (x + 1 < 9 && y + 1 < 9) {
-				nowa = 10 * (x + 1) + y + 1;
+				nowa = 8 * (x + 1) + y + 1;
 				tablica.add(nowa);
 			}
 			if (x + 1 < 9 && y - 1 > 0) {
-				nowa = 10 * (x + 1) + y - 1;
+				nowa = 8 * (x + 1) + y - 1;
 				tablica.add(nowa);
 			}
 		} else if (kolor.equals(Kolor.BIALY)) {
 			if (x - 1 > 0 && y - 1 > 0) {
-				nowa = 10 * (x - 1) + y - 1;
+				nowa = 8 * (x - 1) + y - 1;
 				tablica.add(nowa);
 			}
 			if (x - 1 > 0 && y + 1 > 0) {
-				nowa = 10 * (x - 1) + y + 1;
+				nowa = 8 * (x - 1) + y + 1;
 				tablica.add(nowa);
 			}
 		}

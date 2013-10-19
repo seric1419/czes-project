@@ -20,9 +20,7 @@ public class Goniec extends Figura {
 		int r = y + 1;
 		// PIERWSZY SKOS ROSNACO
 		while (p < 9 && r < 9) {
-			// do tablicy przekazujemy p*10 + r, pozniej uzyskamy dzielac przez
-			// 10
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 			p++;
 			r++;
@@ -32,9 +30,7 @@ public class Goniec extends Figura {
 		r = y - 1;
 		// PIERWSZY SKOS MALEJACO
 		while (p > 0 && r > 0) {
-			// do tablicy przekazujemy p*10 + r, pozniej uzyskamy dzielac przez
-			// 10
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 			p--;
 			r--;
@@ -44,9 +40,7 @@ public class Goniec extends Figura {
 		r = y + 1;
 		// DRUGI SKOS ROSNACO
 		while (p > 0 && r < 9) {
-			// do tablicy przekazujemy p*10 + r, pozniej uzyskamy dzielac przez
-			// 10
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 			p--;
 			r++;
@@ -56,9 +50,7 @@ public class Goniec extends Figura {
 		r = y - 1;
 		// DRUGI SKOS MALEJACO
 		while (p < 9 && r > 0) {
-			// do tablicy przekazujemy p*10 + r, pozniej uzyskamy dzielac przez
-			// 10
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 			p++;
 			r--;
