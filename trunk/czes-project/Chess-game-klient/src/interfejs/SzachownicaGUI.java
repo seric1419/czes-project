@@ -93,51 +93,51 @@ public class SzachownicaGUI extends JFrame implements ZmianaWybranegoListener{
 	
 	private void inicjalizujFigury(){
 		try{
-			getPole(0,0).setImage(Constants.czarnaWieza);
-			getPole(1,0).setImage(Constants.czarnyKon);
-			getPole(2,0).setImage(Constants.czarnyGoniec);
-			getPole(3,0).setImage(Constants.czarnaKrolowa);
-			getPole(4,0).setImage(Constants.czarnyKrol);
-			getPole(5,0).setImage(Constants.czarnyGoniec);
-			getPole(6,0).setImage(Constants.czarnyKon);
-			getPole(7,0).setImage(Constants.czarnaWieza);
-			getPole(0,1).setImage(Constants.czarnyPion);
-			getPole(1,1).setImage(Constants.czarnyPion);
-			getPole(2,1).setImage(Constants.czarnyPion);
-			getPole(3,1).setImage(Constants.czarnyPion);
-			getPole(4,1).setImage(Constants.czarnyPion);
-			getPole(5,1).setImage(Constants.czarnyPion);
-			getPole(6,1).setImage(Constants.czarnyPion);
-			getPole(7,1).setImage(Constants.czarnyPion);
+			getPole(1,1).setImage(Constants.czarnaWieza);
+			getPole(2,1).setImage(Constants.czarnyKon);
+			getPole(3,1).setImage(Constants.czarnyGoniec);
+			getPole(4,1).setImage(Constants.czarnaKrolowa);
+			getPole(5,1).setImage(Constants.czarnyKrol);
+			getPole(6,1).setImage(Constants.czarnyGoniec);
+			getPole(7,1).setImage(Constants.czarnyKon);
+			getPole(8,1).setImage(Constants.czarnaWieza);
+			getPole(1,2).setImage(Constants.czarnyPion);
+			getPole(2,2).setImage(Constants.czarnyPion);
+			getPole(3,2).setImage(Constants.czarnyPion);
+			getPole(4,2).setImage(Constants.czarnyPion);
+			getPole(5,2).setImage(Constants.czarnyPion);
+			getPole(6,2).setImage(Constants.czarnyPion);
+			getPole(7,2).setImage(Constants.czarnyPion);
+			getPole(8,2).setImage(Constants.czarnyPion);
 			
-			getPole(0,6).setImage(Constants.bialyPion);
-			getPole(1,6).setImage(Constants.bialyPion);
-			getPole(2,6).setImage(Constants.bialyPion);
-			getPole(3,6).setImage(Constants.bialyPion);
-			getPole(4,6).setImage(Constants.bialyPion);
-			getPole(5,6).setImage(Constants.bialyPion);
-			getPole(6,6).setImage(Constants.bialyPion);
-			getPole(7,6).setImage(Constants.bialyPion);
-			getPole(0,7).setImage(Constants.bialaWieza);
-			getPole(1,7).setImage(Constants.bialyKon);
-			getPole(2,7).setImage(Constants.bialyGoniec);
-			getPole(3,7).setImage(Constants.bialaKrolowa);
-			getPole(4,7).setImage(Constants.bialyKrol);
-			getPole(5,7).setImage(Constants.bialyGoniec);
-			getPole(6,7).setImage(Constants.bialyKon);
-			getPole(7,7).setImage(Constants.bialaWieza);
+			getPole(1,7).setImage(Constants.bialyPion);
+			getPole(2,7).setImage(Constants.bialyPion);
+			getPole(3,7).setImage(Constants.bialyPion);
+			getPole(4,7).setImage(Constants.bialyPion);
+			getPole(5,7).setImage(Constants.bialyPion);
+			getPole(6,7).setImage(Constants.bialyPion);
+			getPole(7,7).setImage(Constants.bialyPion);
+			getPole(8,7).setImage(Constants.bialyPion);
+			getPole(1,8).setImage(Constants.bialaWieza);
+			getPole(2,8).setImage(Constants.bialyKon);
+			getPole(3,8).setImage(Constants.bialyGoniec);
+			getPole(4,8).setImage(Constants.bialaKrolowa);
+			getPole(5,8).setImage(Constants.bialyKrol);
+			getPole(6,8).setImage(Constants.bialyGoniec);
+			getPole(7,8).setImage(Constants.bialyKon);
+			getPole(8,8).setImage(Constants.bialaWieza);
 		} catch (Exception e){
 			e.printStackTrace();
 		}
 	}
 	
 	public ImagePanel getPole(int pozycjaX, int pozycjaY){
-		return pola.get((pozycjaY) * 8 + pozycjaX);
+		return pola.get((pozycjaY - 1) * 8 + pozycjaX - 1);
 	}
 
 	@Override
 	public void zmianaWybranegoPola(int nowyX, int nowyY) {
-		getPole(focusedX - 1, focusedY - 1).setWybrany(false);
+		getPole(focusedX, focusedY).setWybrany(false);
 		focusedX = nowyX;
 		focusedY = nowyY;
 	}
