@@ -4,11 +4,15 @@ import interfejs.ImagePanel.ZmianaWybranegoListener;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -29,11 +33,11 @@ public class SzachownicaGUI extends JFrame implements ZmianaWybranegoListener{
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SzachownicaGUI frame = new SzachownicaGUI();
+					SzachownicaGUI frame = new SzachownicaGUI(args[0]);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,24 +49,32 @@ public class SzachownicaGUI extends JFrame implements ZmianaWybranegoListener{
 	/**
 	 * Create the frame.
 	 */
-	public SzachownicaGUI() {
+	public SzachownicaGUI(String name) {
 		super("Chess Client");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 840, 860);
+		setBounds(100, 100, 840, 880);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		setWindowFullScreen();
 		rysujPola();
 		inicjalizujFigury();
+		inicjalizujImiona(name);
+	}
+	
+	private void setWindowFullScreen(){
+		GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		device.setFullScreenWindow(this);
+		setSize(850, getHeight());
 	}
 	
 	private void rysujPola(){
 		pola = new ArrayList<ImagePanel>();
 		boolean brazowe = false;
 		int pozycjaX = 10;
-		int pozycjaY = 10;
+		int pozycjaY = 30;
 		
 		for(int i = 1; i < 9; i++){
 			for(int j = 1; j < 9; j++){
@@ -129,6 +141,18 @@ public class SzachownicaGUI extends JFrame implements ZmianaWybranegoListener{
 		} catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	private void inicjalizujImiona(String name){
+		JLabel imieGracza1 = new JLabel(name);
+		imieGracza1.setBounds(50, 835, 500, 20);
+		imieGracza1.setFont(new Font(imieGracza1.getFont().getName(), Font.BOLD, 20));
+		contentPane.add(imieGracza1);
+		
+		JLabel imieGracza2 = new JLabel(name);
+		imieGracza2.setBounds(500, 5, 500, 20);
+		imieGracza2.setFont(new Font(imieGracza2.getFont().getName(), Font.BOLD, 20));
+		contentPane.add(imieGracza2);
 	}
 	
 	public ImagePanel getPole(int pozycjaX, int pozycjaY){
