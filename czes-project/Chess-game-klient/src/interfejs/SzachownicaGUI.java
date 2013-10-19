@@ -1,5 +1,7 @@
 package interfejs;
 
+import interfejs.ImagePanel.ZmianaWybranegoListener;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.util.ArrayList;
@@ -10,11 +12,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class SzachownicaGUI extends JFrame {
+public class SzachownicaGUI extends JFrame implements ZmianaWybranegoListener{
 
 	private static final long serialVersionUID = 3376616182283550890L;
 	private JPanel contentPane;
 	private List<ImagePanel> pola;
+	
+	int focusedX = 0;
+	int focusedY = 0;
 	
 	private static final Color brown = new Color(160, 82, 45);
 	private static final Color lightBrown = new Color(245, 222, 179);
@@ -61,6 +66,7 @@ public class SzachownicaGUI extends JFrame {
 				ImagePanel pole = new ImagePanel(j, i);
 				pole.setBounds(pozycjaX, pozycjaY, 100, 100);
 				pole.setBorder(BorderFactory.createLineBorder(Color.black));
+				pole.setZmianaWybranegoPolaListener(this);
 				
 				if(brazowe){
 					pole.setBackground(brown);
@@ -83,6 +89,13 @@ public class SzachownicaGUI extends JFrame {
 	}
 	
 	public ImagePanel getPole(int pozycjaX, int pozycjaY){
-		return pola.get((pozycjaY - 1) * 8 + pozycjaX);
+		return pola.get((pozycjaY) * 8 + pozycjaX);
+	}
+
+	@Override
+	public void zmianaWybranegoPola(int nowyX, int nowyY) {
+		getPole(focusedX, focusedY).setWybrany(false);
+		focusedX = nowyX;
+		focusedY = nowyY;
 	}
 }
