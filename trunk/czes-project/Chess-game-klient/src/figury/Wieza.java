@@ -21,7 +21,7 @@ public class Wieza extends Figura {
 		while (p < 9) {
 			// do tablicy przekazujemy p*10 + r, pozniej uzyskamy dzielac przez
 			// 10
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 			p++;
 		}
@@ -31,7 +31,7 @@ public class Wieza extends Figura {
 		while (p > 0) {
 			// do tablicy przekazujemy p*10 + r, pozniej uzyskamy dzielac przez
 			// 10
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 			p--;
 		}
@@ -41,7 +41,7 @@ public class Wieza extends Figura {
 		while (r < 9) {
 			// do tablicy przekazujemy p*10 + r, pozniej uzyskamy dzielac przez
 			// 10
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 			r++;
 		}
@@ -51,7 +51,7 @@ public class Wieza extends Figura {
 		while (r > 0) {
 			// do tablicy przekazujemy p*10 + r, pozniej uzyskamy dzielac przez
 			// 10
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 			r--;
 		}

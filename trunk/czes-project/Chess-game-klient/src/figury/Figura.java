@@ -11,7 +11,7 @@ public abstract class Figura {
 		this.kolor = kolor;
 	}
 
-	public Kolor getKolor() {
+	public Kolor pobierzKolor() {
 		return this.kolor;
 	}
 

@@ -21,14 +21,14 @@ public class Skoczek extends Figura {
 		int p = x + 2; // zmienne pomocnicze
 		int r = y + 1;
 		if (p < 9 && r < 9) {
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 		}
 		// 2.
 		p = x - 2; // zmienne pomocnicze
 		r = y + 1;
 		if (p > 0 && r < 9) {
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 		}
 
@@ -36,7 +36,7 @@ public class Skoczek extends Figura {
 		p = x + 2; // zmienne pomocnicze
 		r = y - 1;
 		if (p < 9 && r > 0) {
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 		}
 
@@ -44,7 +44,7 @@ public class Skoczek extends Figura {
 		p = x - 2; // zmienne pomocnicze
 		r = y - 1;
 		if (p > 0 && r > 0) {
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 		}
 
@@ -52,7 +52,7 @@ public class Skoczek extends Figura {
 		p = x + 1; // zmienne pomocnicze
 		r = y + 2;
 		if (p < 9 && r < 9) {
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 		}
 
@@ -60,7 +60,7 @@ public class Skoczek extends Figura {
 		p = x + 1; // zmienne pomocnicze
 		r = y - 2;
 		if (p < 9 && r > 0) {
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 		}
 
@@ -68,7 +68,7 @@ public class Skoczek extends Figura {
 		p = x - 1; // zmienne pomocnicze
 		r = y + 2;
 		if (p > 0 && r < 9) {
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 		}
 
@@ -76,7 +76,7 @@ public class Skoczek extends Figura {
 		p = x - 1; // zmienne pomocnicze
 		r = y - 2;
 		if (p > 0 && r > 0) {
-			nowa = p * 10 + r;
+			nowa = p * 8 + r;
 			tablica.add(nowa);
 		}
 

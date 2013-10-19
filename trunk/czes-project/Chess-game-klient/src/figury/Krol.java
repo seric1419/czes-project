@@ -18,46 +18,46 @@ public class Krol extends Figura {
 
 		// PIERWSZY SKOS ROSNACO
 		if (x + 1 < 9 && y + 1 < 9) {
-			nowa = (x + 1) * 10 + y + 1;
+			nowa = (x + 1) * 8 + y + 1;
 			tablica.add(nowa);
 		}
 
 		// PIERWSZY SKOS MALEJACO
 		if (x - 1 > 0 && y - 1 > 0) {
-			nowa = (x - 1) * 10 + y - 1;
+			nowa = (x - 1) * 8 + y - 1;
 			tablica.add(nowa);
 		}
 
 		// DRUGI SKOS ROSNACO
 		if (x - 1 > 0 && y + 1 < 9) {
-			nowa = (x - 1) * 10 + y + 1;
+			nowa = (x - 1) * 8 + y + 1;
 			tablica.add(nowa);
 		}
 
 		// DRUGI SKOS MALEJACO
 		if (x + 1 < 9 && y - 1 < 0) {
-			nowa = (x + 1) * 10 + y - 1;
+			nowa = (x + 1) * 8 + y - 1;
 			tablica.add(nowa);
 		}
 
 		// POZIOMO W GORE
 		if (x + 1 < 9) {
-			nowa = (x + 1) * 10 + y;
+			nowa = (x + 1) * 8 + y;
 			tablica.add(nowa);
 		}
 		// POZIOMO W DOL
 		if (x - 1 > 0) {
-			nowa = (x - 1) * 10 + y;
+			nowa = (x - 1) * 8 + y;
 			tablica.add(nowa);
 		}
 		// PIONOWO W GORE
 		if (y + 1 < 9) {
-			nowa = x * 10 + y + 1;
+			nowa = x * 8 + y + 1;
 			tablica.add(nowa);
 		}
 		// PIONOWO W DOL
 		if (y - 1 > 0) {
-			nowa = x * 10 + y - 1;
+			nowa = x * 8 + y - 1;
 			tablica.add(nowa);
 		}
 
