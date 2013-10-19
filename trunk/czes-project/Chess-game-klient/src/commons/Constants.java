@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 
 public class Constants {
 
+	public static final int ILOSC_POL = 64;
 	public static final BufferedImage czarnyPion = getCzarnyPion();
 	public static final BufferedImage bialyPion = getBialyPion();
 	public static final BufferedImage czarnaWieza = getCzarnaWieza();
