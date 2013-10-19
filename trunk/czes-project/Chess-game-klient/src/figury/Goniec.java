@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Goniec extends Figura {
 
-	Goniec(Kolor kolor) {
+	public Goniec(Kolor kolor) {
 		super(kolor);
 		// TODO Auto-generated constructor stub
 	}

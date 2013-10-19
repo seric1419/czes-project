@@ -18,5 +18,9 @@ public abstract class Figura {
 	public boolean czyPionek() {
 		return false;
 	}
+	
+	public boolean czyKrol() {
+		return false;
+	}
 
 }

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import figury.Figura;
 import figury.PustaFigura;
 import figury.Kolor;
 import commons.Constants;
@@ -19,12 +18,17 @@ public class Szachownica {
 		p1.ustawFigure(new PustaFigura());
 	}
 
-	public void czySzach() {
-
+	public boolean czySzach(Pole pole) {
+		//sprawdzamy kolor krola
+			//sprawdzamy szach od pionka
+		//sprawdzamy szach od wiezy /hetmana
+		//sprawdzamy szach od gonca/hetmana
+		//sprawdzamy szach od skoczka
+		return false;
 	}
 
-	public void czyMat() {
-
+	public boolean czyMat() {
+		return false;
 	}
 
 	public ArrayList<Integer> sprawdzanePola(Pole pole_start) {
@@ -161,13 +165,18 @@ public class Szachownica {
 				if(pole_fin == pola.get(temp)){ // sprawdzamy czy pole docelowe jest na tablicy dostepnych
 					
 					if(!pole_fin.pobierzFigure().pobierzKolor().equals(pola.get(temp).pobierzFigure().pobierzKolor())){ //sprawdzamy czy figury maja takie same kolory
-						return true;
+						
+						if(pole_start.pobierzFigure().czyKrol()){ // sprawdzamy dla krola
+							if(!czySzach(pole_start)) return true; // sprawdzamy czy krol nie wejdzie na szach
+							else return false;
+							
+						} else return true;
 					} else return false;
 				}
 			}
 		}
 			
-		// Tutaj jeszcze kilka rzeczy do sprawdzenia czy krol nie wystawi sie na szach czy mozliwa roszada
+		// + Roszada
 		return false;
 
 	}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Pion extends Figura {
 
-	Pion(Kolor kolor) {
+	public Pion(Kolor kolor) {
 		super(kolor);
 	}
 

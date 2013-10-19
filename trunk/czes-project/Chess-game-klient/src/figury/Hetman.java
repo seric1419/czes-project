@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Hetman extends Figura {
 
-	Hetman(Kolor kolor) {
+	public Hetman(Kolor kolor) {
 		super(kolor);
 		// TODO Auto-generated constructor stub
 	}

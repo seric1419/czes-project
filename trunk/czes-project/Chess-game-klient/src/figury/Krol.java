@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Krol extends Figura {
 
-	Krol(Kolor kolor) {
+	public Krol(Kolor kolor) {
 		super(kolor);
 		// TODO Auto-generated constructor stub
 	}
@@ -62,6 +62,10 @@ public class Krol extends Figura {
 		}
 
 		return tablica;
+	}
+	
+	public boolean czyKrol() {
+		return true;
 	}
 
 }
