@@ -69,7 +69,7 @@ public class ImagePanel extends JPanel{
 	private MouseAdapter mouseListener = new MouseAdapter() {
 		
 		@Override
-		public void mouseClicked(MouseEvent e){
+		public void mousePressed(MouseEvent e){
 			listener.zmianaWybranegoPola(pozycjaX, pozycjaY);
 			setWybrany(true);
 		}
