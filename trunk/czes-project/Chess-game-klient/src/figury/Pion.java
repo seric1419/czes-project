@@ -12,15 +12,16 @@ public class Pion extends Figura {
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {
 		ArrayList<Integer> tablica = new ArrayList<Integer>();
 		int nowa;
-		if (kolor.equals(Kolor.BIALY))
+		if (kolor.equals(Kolor.CZARNY)) {
 			if (x + 1 < 9) {
 				nowa = 10 * (x + 1) + y;
 				tablica.add(nowa);
-			} else if (kolor.equals(Kolor.CZARNY))
-				if (x - 1 > 0) {
-					nowa = 10 * (x - 1) + y;
-					tablica.add(nowa);
-				}
+			}
+		} else if (kolor.equals(Kolor.BIALY))
+			if (x - 1 > 0) {
+				nowa = 10 * (x - 1) + y;
+				tablica.add(nowa);
+			}
 		return tablica;
 	}
 
@@ -28,7 +29,7 @@ public class Pion extends Figura {
 		ArrayList<Integer> tablica = new ArrayList<Integer>();
 		int nowa;
 
-		if (kolor.equals(Kolor.BIALY)) {
+		if (kolor.equals(Kolor.CZARNY)) {
 			if (x + 1 < 9 && y + 1 < 9) {
 				nowa = 10 * (x + 1) + y + 1;
 				tablica.add(nowa);
@@ -37,7 +38,7 @@ public class Pion extends Figura {
 				nowa = 10 * (x + 1) + y - 1;
 				tablica.add(nowa);
 			}
-		} else if (kolor.equals(Kolor.CZARNY)) {
+		} else if (kolor.equals(Kolor.BIALY)) {
 			if (x - 1 > 0 && y - 1 > 0) {
 				nowa = 10 * (x - 1) + y - 1;
 				tablica.add(nowa);
