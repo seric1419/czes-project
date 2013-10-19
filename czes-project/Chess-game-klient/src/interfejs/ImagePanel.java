@@ -2,10 +2,10 @@ package interfejs;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
@@ -29,7 +29,12 @@ public class ImagePanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, 0, 0, null);            
+        Graphics2D g2d = (Graphics2D) g;
+        if(image != null){
+        	int x = (this.getWidth() - image.getWidth(null)) / 2;
+            int y = (this.getHeight() - image.getHeight(null)) / 2;
+            g2d.drawImage(image, x, y, null);
+        }
     }
 
 	public Image getImage() {
@@ -61,7 +66,7 @@ public class ImagePanel extends JPanel{
 		this.listener = listener;
 	}
 	
-	private MouseListener mouseListener = new MouseAdapter() {
+	private MouseAdapter mouseListener = new MouseAdapter() {
 		
 		@Override
 		public void mouseClicked(MouseEvent e){
