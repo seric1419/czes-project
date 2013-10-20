@@ -1,5 +1,8 @@
+import figury.Goniec;
+import figury.Hetman;
 import figury.Kolor;
 import figury.PustaFigura;
+import figury.Wieza;
 import interfejs.SzachownicaGUI;
 
 import java.awt.Color;
@@ -139,29 +142,29 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 		p1.ustawFigure(new PustaFigura());
 	}
 
-	public boolean czySzach(Pole pole) {
+	public boolean czySzach(Pole pole1, Pole pole2) {
 
 		
 		
 		//pobieramy wspolrzedne pola
-		int x = pole.pobierzX();
-		int y = pole.pobierzY();
+		int x = pole2.pobierzX();
+		int y = pole2.pobierzY();
 		
 		
-		if(pole.pobierzFigure().pobierzKolor().equals(Kolor.BIALY)){ // dla bialego krola
+		if(pole1.pobierzFigure().pobierzKolor().equals(Kolor.BIALY)){ // dla bialego krola
 
 			//////////////////////////////////////////
 			///////////SZACH PRZEZ PIONKA
 			////////////////////////////////////////
-					
+			
 			// obliczamy pozycje figur po ukosie
 			if(x - 1 > 0 && y - 1 > 0){
-				int pionek1 = (x-1)*8 + y - 1;
+				int pionek1 = (y-2)*8 + x - 2;
 				if(pola.get(pionek1).pobierzFigure().czyPionek()) // sprawdzamy czy po ukosie jest pionek
 					if(pola.get(pionek1).pobierzFigure().pobierzKolor().equals(Kolor.CZARNY)) return true; // sprawdzamy czy po ukosie jest pionek
 			}
 			if(x + 1 < 9 && y - 1 > 0){
-				int pionek2 = (x+1)*8 + y - 1;
+				int pionek2 = (y-2)*8 + x;
 				if(pola.get(pionek2).pobierzFigure().czyPionek()) 
 					if(pola.get(pionek2).pobierzFigure().pobierzKolor().equals(Kolor.CZARNY)) return true; // sprawdzamy czy po ukosie jest pionek	
 			}
@@ -232,7 +235,174 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 	public void ZamienPionek(Pole pole){
 		
 	}
-
+	
+	public ArrayList<Integer> dodajPrzeszkody(ArrayList<Integer> lista, Pole pole){
+		
+		ArrayList<Integer> listaZPrzeszkodami = new ArrayList<Integer>();
+		/////////////////////////////
+		/////Dla wiezy lub hetmana
+		////////////////////////////
+		if(pole.pobierzFigure() instanceof Wieza || pole.pobierzFigure() instanceof Hetman){
+			int p = pole.pobierzX();
+			int r = pole.pobierzY();
+			int temp; // liczba ktora bedziemy dodawac
+			int index = 1; // iterator
+			
+			
+			//sprawdzamy pola idac w dol
+			while(p + index < 9)
+			{
+				if(pobierzPole(p + index, r).pobierzFigure().pobierzKolor().equals(pole.pobierzFigure().pobierzKolor())){ // jesli maja taki sam kolor
+					break;
+				} else if(pobierzPole(p + index, r).pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // brak figury
+					temp = (r - 1) * 8 + p + index - 1;
+					listaZPrzeszkodami.add(temp);					
+				} else{ // jesli maja przeciwny kolor
+					temp = (r - 1) * 8 + p + index - 1;
+					listaZPrzeszkodami.add(temp);
+					break;
+				}
+				index++;
+			}
+			
+			//sprawdzamy pola idac w prawo
+			index = 1;
+			while(r + index < 9)
+			{
+				if(pobierzPole(p, r + index).pobierzFigure().pobierzKolor().equals(pole.pobierzFigure().pobierzKolor())){ // jesli maja taki sam kolor
+					break;
+				} else if(pobierzPole(p, r + index).pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // brak figury
+					temp = (r + index - 1) * 8 + p - 1;
+					listaZPrzeszkodami.add(temp);					
+				} else{ // jesli maja przeciwny kolor
+					temp = (r + index - 1) * 8 + p - 1;
+					listaZPrzeszkodami.add(temp);
+					break;
+				}
+				index++;
+			}
+			
+			//sprawdzamy pola idac w gore
+			index = 1;
+			while(p - index > 0)
+			{
+				if(pobierzPole(p - index, r).pobierzFigure().pobierzKolor().equals(pole.pobierzFigure().pobierzKolor())){ // jesli maja taki sam kolor
+					break;
+				} else if(pobierzPole(p - index, r).pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // brak figury
+					temp = (r - 1) * 8 + p - index - 1;
+					listaZPrzeszkodami.add(temp);					
+				} else{ // jesli maja przeciwny kolor
+					temp = (r - 1) * 8 + p - index - 1;
+					listaZPrzeszkodami.add(temp);
+					break;
+				}
+				index++;
+			}
+			
+			//sprawdzamy pola idac w lewo
+			index = 1;
+			while(r - index > 0)
+			{
+				if(pobierzPole(p, r - index).pobierzFigure().pobierzKolor().equals(pole.pobierzFigure().pobierzKolor())){ // jesli maja taki sam kolor
+					break;
+				} else if(pobierzPole(p, r - index).pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // brak figury
+					temp = (r - index - 1) * 8 + p - 1;
+					listaZPrzeszkodami.add(temp);					
+				} else{ // jesli maja przeciwny kolor
+					temp = (r - index - 1) * 8 + p - 1;
+					listaZPrzeszkodami.add(temp);
+					break;
+				}
+				index++;
+			}
+			
+		}
+		
+		/////////////////////////////
+		/////Dla gonca lub hetmana
+		////////////////////////////		
+		if(pole.pobierzFigure() instanceof Goniec || pole.pobierzFigure() instanceof Hetman){
+			
+			int p = pole.pobierzX();
+			int r = pole.pobierzY();
+			int temp; // liczba ktora bedziemy dodawac
+			int index = 1; // iterator
+			
+			
+			//sprawdzamy pola idac w dol i prawo
+			while(p + index < 9 && r + index < 9)
+			{
+				if(pobierzPole(p + index, r + index).pobierzFigure().pobierzKolor().equals(pole.pobierzFigure().pobierzKolor())){ // jesli maja taki sam kolor
+					break;
+				} else if(pobierzPole(p + index, r + index).pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // brak figury
+					temp = (r + index - 1) * 8 + p + index - 1;
+					listaZPrzeszkodami.add(temp);					
+				} else{ // jesli maja przeciwny kolor
+					temp = (r + index - 1) * 8 + p + index - 1;
+					listaZPrzeszkodami.add(temp);
+					break;
+				}
+				index++;
+			}
+			
+			//sprawdzamy pola idac w prawo
+			index = 1;
+			while(r + index < 9 && p - index > 0)
+			{
+				if(pobierzPole(p - index, r + index).pobierzFigure().pobierzKolor().equals(pole.pobierzFigure().pobierzKolor())){ // jesli maja taki sam kolor
+					break;
+				} else if(pobierzPole(p - index, r + index).pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // brak figury
+					temp = (r + index - 1) * 8 + p - index - 1;
+					listaZPrzeszkodami.add(temp);					
+				} else{ // jesli maja przeciwny kolor
+					temp = (r + index - 1) * 8 + p - index - 1;
+					listaZPrzeszkodami.add(temp);
+					break;
+				}
+				index++;
+			}
+			
+			//sprawdzamy pola idac w gore
+			index = 1;
+			while(p - index > 0 && r - index > 0)
+			{
+				if(pobierzPole(p - index, r - index).pobierzFigure().pobierzKolor().equals(pole.pobierzFigure().pobierzKolor())){ // jesli maja taki sam kolor
+					break;
+				} else if(pobierzPole(p - index, r - index).pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // brak figury
+					temp = (r - index - 1) * 8 + p - index - 1;
+					listaZPrzeszkodami.add(temp);					
+				} else{ // jesli maja przeciwny kolor
+					temp = (r - index - 1) * 8 + p - index - 1;
+					listaZPrzeszkodami.add(temp);
+					break;
+				}
+				index++;
+			}
+			
+			//sprawdzamy pola idac w lewo
+			index = 1;
+			while(r - index > 0 && p + index < 9)
+			{
+				if(pobierzPole(p + index, r - index).pobierzFigure().pobierzKolor().equals(pole.pobierzFigure().pobierzKolor())){ // jesli maja taki sam kolor
+					break;
+				} else if(pobierzPole(p + index, r - index).pobierzFigure().pobierzKolor().equals(Kolor.BRAK)){ // brak figury
+					temp = (r - index - 1) * 8 + p + index - 1;
+					listaZPrzeszkodami.add(temp);					
+				} else{ // jesli maja przeciwny kolor
+					temp = (r - index - 1) * 8 + p + index - 1;
+					listaZPrzeszkodami.add(temp);
+					break;
+				}
+				index++;
+			}
+			
+			
+		}
+		
+		lista.retainAll(listaZPrzeszkodami); // czesc wspolna obu list
+		return lista;
+	}
+	
 	public boolean sprawdzRuch(int x1, int x2) {
 		
 		//pomoc
@@ -363,8 +533,9 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 			ArrayList<Integer> tablica = sprawdzanePola(pole_start);
 			
 			//pomoc
-			wypiszSprawdzane(tablica);
+			//wypiszSprawdzane(tablica);
 			
+			tablica = dodajPrzeszkody(tablica, pole_start);
 			for(int i = 0; i < tablica.size(); i++)
 			{
 				int temp = tablica.get(i);
@@ -373,11 +544,11 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 					
 					if(!pole_start.pobierzFigure().pobierzKolor().equals(pole_fin.pobierzFigure().pobierzKolor())){ //sprawdzamy czy figury maja takie same kolory
 						
-						//if(pole_start.pobierzFigure().czyKrol()){ // sprawdzamy dla krola
-							//if(!czySzach(pole_fin)) return true; // sprawdzamy czy krol nie wejdzie na szach
-							//else return false;
+						if(pole_start.pobierzFigure().czyKrol()){ // sprawdzamy dla krola
+							if(!czySzach(pole_start, pole_fin)) return true; // sprawdzamy czy krol nie wejdzie na szach
+							else return false;
 							
-						/*} else*/ return true;
+						} else return true;
 					} else return false;
 				}
 			}
