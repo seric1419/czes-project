@@ -1,5 +1,8 @@
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.BorderFactory;
 
 import interfejs.ImagePanel;
 import figury.Figura;
@@ -40,6 +43,14 @@ public class Pole {
 
 	public int pobierzY() {
 		return wspol_y;
+	}
+	
+	public void zaznaczPole(){
+		imagePanel.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+	}
+	
+	public void odznaczPole(){
+		imagePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 	
 	public void setZmianaWybranegoPolaListener(ZmianaWybranegoListener listener){
