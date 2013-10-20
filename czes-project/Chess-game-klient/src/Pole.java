@@ -50,8 +50,8 @@ public class Pole {
 		
 		@Override
 		public void mousePressed(MouseEvent e){
-			listener.zmianaWybranegoPola(wspol_x, wspol_y);
 			imagePanel.setWybrany(true);
+			listener.zmianaWybranegoPola(wspol_x, wspol_y);
 		}
 	};
 	

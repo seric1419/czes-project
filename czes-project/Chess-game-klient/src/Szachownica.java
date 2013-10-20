@@ -18,8 +18,8 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 	private List<Pole> pola;
 	private SzachownicaGUI szachownicaGUI;
 
-	int focusedX = 1;
-	int focusedY = 1;
+	int focusedX = 0;
+	int focusedY = 0;
 
 	public static void main(final String[] args){
 		new Szachownica();
@@ -292,7 +292,15 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 
 	@Override
 	public void zmianaWybranegoPola(int nowyX, int nowyY) {
-		pobierzPole(focusedX, focusedY).pobierzImagePanel().setWybrany(false);
+		if(focusedX != 0 && focusedY != 0){
+			pobierzPole(focusedX, focusedY).pobierzImagePanel().setWybrany(false);
+			pobierzPole(nowyX, nowyY).pobierzImagePanel().setWybrany(false);
+			
+			zamien(pobierzPole(focusedX, focusedY), pobierzPole(nowyX, nowyY));
+			focusedX = 0;
+			focusedY = 0;
+			return;
+		}
 		focusedX = nowyX;
 		focusedY = nowyY;
 	}
