@@ -2,11 +2,19 @@ package figury;
 
 import java.util.ArrayList;
 
+import commons.Constants;
+
 public class Goniec extends Figura {
 
 	public Goniec(Kolor kolor) {
 		super(kolor);
-		// TODO Auto-generated constructor stub
+		
+		if(kolor == Kolor.BIALY){
+			super.setImage(Constants.BIALY_GONIEC_OBRAZEK);
+		}
+		else if(kolor == Kolor.CZARNY){
+			super.setImage(Constants.CZARNY_GONIEC_OBRAZEK);
+		}
 	}
 
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {

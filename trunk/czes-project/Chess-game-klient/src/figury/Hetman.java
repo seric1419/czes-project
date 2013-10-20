@@ -2,11 +2,19 @@ package figury;
 
 import java.util.ArrayList;
 
+import commons.Constants;
+
 public class Hetman extends Figura {
 
 	public Hetman(Kolor kolor) {
 		super(kolor);
-		// TODO Auto-generated constructor stub
+		
+		if(kolor == Kolor.BIALY){
+			super.setImage(Constants.BIALA_KROLOWA_OBRAZEK);
+		}
+		else if(kolor == Kolor.CZARNY){
+			super.setImage(Constants.CZARNA_KROLOWA_OBRAZEK);
+		}
 	}
 
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {

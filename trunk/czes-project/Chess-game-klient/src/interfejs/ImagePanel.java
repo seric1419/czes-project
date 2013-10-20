@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
@@ -15,14 +14,9 @@ public class ImagePanel extends JPanel{
 
 	private static final long serialVersionUID = 7345075863374459440L;
 	private BufferedImage image;
-	private int pozycjaX;
-	private int pozycjaY;
-	private ZmianaWybranegoListener listener;
 
-    public ImagePanel(int pozycjaX, int pozycjaY) {
+    public ImagePanel(MouseAdapter mouseListener) {
        super();
-       this.pozycjaX = pozycjaX;
-       this.pozycjaY = pozycjaY;
        addMouseListener(mouseListener);
     }
 
@@ -41,16 +35,8 @@ public class ImagePanel extends JPanel{
 		return image;
 	}
 
-	public void setImage(BufferedImage image) {
+	public void ustawObrazek(BufferedImage image) {
 		this.image = image;
-	}
-
-	public int getPozycjaX() {
-		return pozycjaX;
-	}
-
-	public int getPozycjaY() {
-		return pozycjaY;
 	}
 	
 	public void setWybrany(boolean wybrany){
@@ -60,22 +46,5 @@ public class ImagePanel extends JPanel{
 		else{
 			setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		}
-	}
-	
-	public void setZmianaWybranegoPolaListener(ZmianaWybranegoListener listener){
-		this.listener = listener;
-	}
-	
-	private MouseAdapter mouseListener = new MouseAdapter() {
-		
-		@Override
-		public void mousePressed(MouseEvent e){
-			listener.zmianaWybranegoPola(pozycjaX, pozycjaY);
-			setWybrany(true);
-		}
-	};
-	
-	public interface ZmianaWybranegoListener{
-		public void zmianaWybranegoPola(int nowyX, int nowyY);
 	}
 }

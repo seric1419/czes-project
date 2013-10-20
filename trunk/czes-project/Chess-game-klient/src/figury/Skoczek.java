@@ -2,11 +2,19 @@ package figury;
 
 import java.util.ArrayList;
 
+import commons.Constants;
+
 public class Skoczek extends Figura {
 
 	public Skoczek(Kolor kolor) {
 		super(kolor);
-		// TODO Auto-generated constructor stub
+		
+		if(kolor == Kolor.BIALY){
+			super.setImage(Constants.BIALY_KON_OBRAZEK);
+		}
+		else if(kolor == Kolor.CZARNY){
+			super.setImage(Constants.CZARNY_KON_OBRAZEK);
+		}
 	}
 
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {
