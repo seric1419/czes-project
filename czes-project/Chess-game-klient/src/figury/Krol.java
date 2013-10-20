@@ -17,6 +17,9 @@ public class Krol extends Figura {
 		}
 	}
 
+	public String coJestes(){
+		return "Krol";
+	}
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {
 
 		ArrayList<Integer> tablica = new ArrayList<Integer>();

@@ -25,6 +25,21 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 		new Szachownica();
 	}
 	
+	public void wypiszPomoc(int x, Pole pole){
+		System.out.println("Index:" + x);
+		System.out.println("Pole X:" + pole.pobierzX());
+		System.out.println("Pole Y:" + pole.pobierzY());
+		System.out.println("Pole figura: " + pole.pobierzFigure().coJestes());
+	}
+	public void wypiszSprawdzane(ArrayList<Integer> list)
+	{
+		System.out.println("Oto rozmiar tablicy: " + list.size());
+		for(int i = 0; i < list.size(); i++)
+		{
+			System.out.println("Oto " + i + " element: " + list.get(i));
+		}
+	}
+	
 	public static Szachownica getInstance(){
 		if(instance == null){
 			instance = new Szachownica();
@@ -124,12 +139,84 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 	}
 
 	public boolean czySzach(Pole pole) {
-		//sprawdzamy kolor krola
-			//sprawdzamy szach od pionka
-		//sprawdzamy szach od wiezy /hetmana
-		//sprawdzamy szach od gonca/hetmana
-		//sprawdzamy szach od skoczka
-		return false;
+
+		
+		
+		//pobieramy wspolrzedne pola
+		int x = pole.pobierzX();
+		int y = pole.pobierzY();
+		
+		
+		if(pole.pobierzFigure().pobierzKolor().equals(Kolor.BIALY)){ // dla bialego krola
+
+			//////////////////////////////////////////
+			///////////SZACH PRZEZ PIONKA
+			////////////////////////////////////////
+					
+			// obliczamy pozycje figur po ukosie
+			if(x - 1 > 0 && y - 1 > 0){
+				int pionek1 = (x-1)*8 + y - 1;
+				if(pola.get(pionek1).pobierzFigure().czyPionek()) // sprawdzamy czy po ukosie jest pionek
+					if(pola.get(pionek1).pobierzFigure().pobierzKolor().equals(Kolor.CZARNY)) return true; // sprawdzamy czy po ukosie jest pionek
+			}
+			if(x + 1 < 9 && y - 1 > 0){
+				int pionek2 = (x+1)*8 + y - 1;
+				if(pola.get(pionek2).pobierzFigure().czyPionek()) 
+					if(pola.get(pionek2).pobierzFigure().pobierzKolor().equals(Kolor.CZARNY)) return true; // sprawdzamy czy po ukosie jest pionek	
+			}
+			
+			//////////////////////////////////////////
+			///////////SZACH PRZEZ WIEZE/HETMANA
+			////////////////////////////////////////
+			
+			//////////////////////////////////////////
+			///////////SZACH PRZEZ GONCA/HETMANA
+			////////////////////////////////////////
+			
+			//////////////////////////////////////////
+			///////////SZACH PRZEZ SKOCZKA
+			////////////////////////////////////////
+
+			//////////////////////////////////////////
+			///////////SZACH PRZEZ KROLA
+			////////////////////////////////////////	
+
+		} else { // dla czarnego krola
+					
+			//////////////////////////////////////////
+			///////////SZACH PRZEZ PIONKA
+			////////////////////////////////////////
+			// obliczamy pozycje figur po ukosie
+			if(x - 1 > 0 && y + 1 < 9){
+				int pionek1 = (x-1)*8 + y + 1;
+				if(pola.get(pionek1).pobierzFigure().czyPionek())
+					if(pola.get(pionek1).pobierzFigure().pobierzKolor().equals(Kolor.BIALY)) return true; // sprawdzamy czy po ukosie jest pionek
+			}
+			if(x + 1 < 9 && y + 1 < 9){
+				int pionek2 = (x+1)*8 + y + 1;
+				if(pola.get(pionek2).pobierzFigure().czyPionek()) 
+					if(pola.get(pionek2).pobierzFigure().pobierzKolor().equals(Kolor.BIALY)) return true; // sprawdzamy czy po ukosie jest pionek	
+			}
+			
+			//////////////////////////////////////////
+			///////////SZACH PRZEZ WIEZE/HETMANA
+			////////////////////////////////////////
+			
+			//////////////////////////////////////////
+			///////////SZACH PRZEZ GONCA/HETMANA
+			////////////////////////////////////////
+			
+			//////////////////////////////////////////
+			///////////SZACH PRZEZ SKOCZKA
+			////////////////////////////////////////
+
+			//////////////////////////////////////////
+			///////////SZACH PRZEZ KROLA
+			////////////////////////////////////////
+					
+		}
+		return false;		
+		
 	}
 
 	public boolean czyMat() {
@@ -146,6 +233,16 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 	}
 
 	public boolean sprawdzRuch(int x1, int x2) {
+		
+		//pomoc
+		//System.out.println("SPRADZAMY POZYCJE WYJSCIOWA");
+		//wypiszPomoc(x1, pola.get(x1));
+		//System.out.println(" ");
+		//System.out.println("SPRADZAMY POZYCJE DOCELOWA");
+		//wypiszPomoc( x2, pola.get(x2));
+		//System.out.println(" ");
+		//System.out.println(" ");
+		
 		Pole pole_start = pola.get(x1);
 		Pole pole_fin = pola.get(x2);
 		
@@ -263,6 +360,10 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 			////////////////////////////INNE FIGURY
 			/////////////////////////////////////////////////
 			ArrayList<Integer> tablica = sprawdzanePola(pole_start);
+			
+			//pomoc
+			wypiszSprawdzane(tablica);
+			
 			for(int i = 1; i < tablica.size(); i++)
 			{
 				int temp = tablica.get(i-1);
@@ -272,7 +373,7 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 					if(!pole_fin.pobierzFigure().pobierzKolor().equals(pola.get(temp).pobierzFigure().pobierzKolor())){ //sprawdzamy czy figury maja takie same kolory
 						
 						if(pole_start.pobierzFigure().czyKrol()){ // sprawdzamy dla krola
-							if(!czySzach(pole_start)) return true; // sprawdzamy czy krol nie wejdzie na szach
+							if(!czySzach(pole_fin)) return true; // sprawdzamy czy krol nie wejdzie na szach
 							else return false;
 							
 						} else return true;
@@ -289,14 +390,30 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 	public Pole pobierzPole(int pozycjaX, int pozycjaY){
 		return pola.get((pozycjaY - 1) * 8 + pozycjaX - 1);
 	}
+	
 
+	
 	@Override
 	public void zmianaWybranegoPola(int nowyX, int nowyY) {
 		if(focusedX != 0 && focusedY != 0){
 			pobierzPole(focusedX, focusedY).pobierzImagePanel().setWybrany(false);
 			pobierzPole(nowyX, nowyY).pobierzImagePanel().setWybrany(false);
+			int pozycja_1 = (focusedY-1) * 8 + focusedX-1;
+			int pozycja_2 = (nowyY-1) * 8 + nowyX-1;
 			
-			zamien(pobierzPole(focusedX, focusedY), pobierzPole(nowyX, nowyY));
+			//POMOC//
+			//System.out.println("UI DLA PUNKTU STARTOWEGO");
+			//wypiszPomoc(pozycja_1, pobierzPole(focusedX,focusedY));
+			//System.out.println(" ");
+			//System.out.println("UI DLA PUNKTU KONCOWEGO");
+			//wypiszPomoc(pozycja_2, pobierzPole(nowyX,nowyY));
+			//System.out.println(" ");
+			
+			
+			if(sprawdzRuch(pozycja_1, pozycja_2))
+			{
+				zamien(pobierzPole(focusedX, focusedY), pobierzPole(nowyX, nowyY));
+			}
 			focusedX = 0;
 			focusedY = 0;
 			return;

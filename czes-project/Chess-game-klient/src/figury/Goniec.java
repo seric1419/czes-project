@@ -17,6 +17,9 @@ public class Goniec extends Figura {
 		}
 	}
 
+	public String coJestes(){
+		return "Goniec";
+	}
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {
 
 		ArrayList<Integer> tablica = new ArrayList<Integer>();

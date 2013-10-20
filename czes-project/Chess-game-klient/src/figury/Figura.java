@@ -32,4 +32,7 @@ public abstract class Figura {
 	public void setImage(BufferedImage image) {
 		this.image = image;
 	}
+	public String coJestes(){
+		return "Nie wiem";
+	}
 }

@@ -16,6 +16,9 @@ public class Wieza extends Figura {
 			super.setImage(Constants.CZARNA_WIEZA_OBRAZEK);
 		}
 	}
+	public String coJestes(){
+		return "Wieza";
+	}
 
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {
 
