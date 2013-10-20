@@ -398,7 +398,6 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 			
 			
 		}
-		
 		lista.retainAll(listaZPrzeszkodami); // czesc wspolna obu list
 		return lista;
 	}
@@ -534,8 +533,8 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 			
 			//pomoc
 			//wypiszSprawdzane(tablica);
-			
-			tablica = dodajPrzeszkody(tablica, pole_start);
+			if(pole_start.pobierzFigure() instanceof Wieza || pole_start.pobierzFigure() instanceof Hetman || pole_start.pobierzFigure() instanceof Goniec)
+				tablica = dodajPrzeszkody(tablica, pole_start);
 			for(int i = 0; i < tablica.size(); i++)
 			{
 				int temp = tablica.get(i);
