@@ -16,6 +16,9 @@ public class Skoczek extends Figura {
 			super.setImage(Constants.CZARNY_KON_OBRAZEK);
 		}
 	}
+	public String coJestes(){
+		return "Skoczek";
+	}
 
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {
 		ArrayList<Integer> tablica = new ArrayList<Integer>();

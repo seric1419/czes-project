@@ -17,6 +17,9 @@ public class Pion extends Figura {
 		}
 	}
 
+	public String coJestes(){
+		return "Pion";
+	}
 	@Override
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {
 		ArrayList<Integer> tablica = new ArrayList<Integer>(); // nieistotne, wszystko zapisane w szachownicy

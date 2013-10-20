@@ -17,6 +17,9 @@ public class Hetman extends Figura {
 		}
 	}
 
+	public String coJestes(){
+		return "Hetman";
+	}
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {
 
 		ArrayList<Integer> tablica = new ArrayList<Integer>();

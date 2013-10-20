@@ -14,5 +14,8 @@ public class PustaFigura extends Figura {
 		ArrayList<Integer> tablica = new ArrayList<Integer>();
 		return tablica;
 	}
+	public String coJestes(){
+		return "Pusta";
+	}
 
 }
