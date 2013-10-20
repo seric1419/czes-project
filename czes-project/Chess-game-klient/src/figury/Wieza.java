@@ -2,11 +2,19 @@ package figury;
 
 import java.util.ArrayList;
 
+import commons.Constants;
+
 public class Wieza extends Figura {
 
 	public Wieza(Kolor kolor) {
 		super(kolor);
-		// TODO Auto-generated constructor stub
+		
+		if(kolor == Kolor.BIALY){
+			super.setImage(Constants.BIALA_WIEZA_OBRAZEK);
+		}
+		else if(kolor == Kolor.CZARNY){
+			super.setImage(Constants.CZARNA_WIEZA_OBRAZEK);
+		}
 	}
 
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {

@@ -2,11 +2,19 @@ package figury;
 
 import java.util.ArrayList;
 
+import commons.Constants;
+
 public class Krol extends Figura {
 
 	public Krol(Kolor kolor) {
 		super(kolor);
-		// TODO Auto-generated constructor stub
+		
+		if(kolor == Kolor.BIALY){
+			super.setImage(Constants.BIALY_KROL_OBRAZEK);
+		}
+		else if(kolor == Kolor.CZARNY){
+			super.setImage(Constants.CZARNY_KROL_OBRAZEK);
+		}
 	}
 
 	public ArrayList<Integer> mozliweRuchy(int x, int y) {
