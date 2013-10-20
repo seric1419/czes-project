@@ -31,7 +31,7 @@ public class Hetman extends Figura {
 		int r = y + 1;
 		// PIERWSZY SKOS ROSNACO
 		while (p < 9 && r < 9) {
-			nowa = p * 8 + r;
+			nowa = (r-1) * 8 + p-1;
 			tablica.add(nowa);
 			p++;
 			r++;
@@ -41,7 +41,7 @@ public class Hetman extends Figura {
 		r = y - 1;
 		// PIERWSZY SKOS MALEJACO
 		while (p > 0 && r > 0) {
-			nowa = p * 8 + r;
+			nowa = (r-1) * 8 + p-1;
 			tablica.add(nowa);
 			p--;
 			r--;
@@ -51,7 +51,7 @@ public class Hetman extends Figura {
 		r = y + 1;
 		// DRUGI SKOS ROSNACO
 		while (p > 0 && r < 9) {
-			nowa = p * 8 + r;
+			nowa = (r-1) * 8 + p-1;
 			tablica.add(nowa);
 			p--;
 			r++;
@@ -61,7 +61,7 @@ public class Hetman extends Figura {
 		r = y - 1;
 		// DRUGI SKOS MALEJACO
 		while (p < 9 && r > 0) {
-			nowa = p * 8 + r;
+			nowa = (r-1) * 8 + p-1;
 			tablica.add(nowa);
 			p++;
 			r--;
@@ -71,7 +71,7 @@ public class Hetman extends Figura {
 		p = x + 1;
 		r = y;
 		while (p < 9) {
-			nowa = p * 8 + r;
+			nowa = (r-1) * 8 + p-1;
 			tablica.add(nowa);
 			p++;
 		}
@@ -79,7 +79,7 @@ public class Hetman extends Figura {
 		p = x - 1;
 		r = y;
 		while (p > 0) {
-			nowa = p * 8 + r;
+			nowa = (r-1) * 8 + p-1;
 			tablica.add(nowa);
 			p--;
 		}
@@ -87,7 +87,7 @@ public class Hetman extends Figura {
 		p = x;
 		r = y + 1;
 		while (r < 9) {
-			nowa = p * 8 + r;
+			nowa = (r-1) * 8 + p-1;
 			tablica.add(nowa);
 			r++;
 		}
@@ -95,7 +95,7 @@ public class Hetman extends Figura {
 		p = x;
 		r = y - 1;
 		while (r > 0) {
-			nowa = p * 8 + r;
+			nowa = (r-1) * 8 + p-1;
 			tablica.add(nowa);
 			r--;
 		}
