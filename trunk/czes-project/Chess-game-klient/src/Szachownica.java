@@ -37,6 +37,7 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 		for(int i = 0; i < list.size(); i++)
 		{
 			System.out.println("Oto " + i + " element: " + list.get(i));
+			pola.get(list.get(i)).zaznaczPole();
 		}
 	}
 	
@@ -239,7 +240,7 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 		//wypiszPomoc(x1, pola.get(x1));
 		//System.out.println(" ");
 		//System.out.println("SPRADZAMY POZYCJE DOCELOWA");
-		//wypiszPomoc( x2, pola.get(x2));
+		wypiszPomoc( x2, pola.get(x2));
 		//System.out.println(" ");
 		//System.out.println(" ");
 		
@@ -301,7 +302,7 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 					} else return false; // jesli wybralismy inny wiersz docelowy niz kolejny
 					
 				} // TU TWOJE MIEJSCE NA OBSLUGE BLEDU!
-			} else if(pole_start.pobierzFigure().pobierzKolor().equals(Kolor.BIALY)){
+			} else if(pole_start.pobierzFigure().pobierzKolor().equals(Kolor.CZARNY)){
 				
 				if(pole_start.pobierzY() == 7){	// czy jest na przedostatnim wierszu
 					
@@ -364,19 +365,19 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 			//pomoc
 			wypiszSprawdzane(tablica);
 			
-			for(int i = 1; i < tablica.size(); i++)
+			for(int i = 0; i < tablica.size(); i++)
 			{
-				int temp = tablica.get(i-1);
+				int temp = tablica.get(i);
 				
-				if(pole_fin == pola.get(temp)){ // sprawdzamy czy pole docelowe jest na tablicy dostepnych
+				if(temp == x2){ // sprawdzamy czy pole docelowe jest na tablicy dostepnych
 					
-					if(!pole_fin.pobierzFigure().pobierzKolor().equals(pola.get(temp).pobierzFigure().pobierzKolor())){ //sprawdzamy czy figury maja takie same kolory
+					if(!pole_start.pobierzFigure().pobierzKolor().equals(pole_fin.pobierzFigure().pobierzKolor())){ //sprawdzamy czy figury maja takie same kolory
 						
-						if(pole_start.pobierzFigure().czyKrol()){ // sprawdzamy dla krola
-							if(!czySzach(pole_fin)) return true; // sprawdzamy czy krol nie wejdzie na szach
-							else return false;
+						//if(pole_start.pobierzFigure().czyKrol()){ // sprawdzamy dla krola
+							//if(!czySzach(pole_fin)) return true; // sprawdzamy czy krol nie wejdzie na szach
+							//else return false;
 							
-						} else return true;
+						/*} else*/ return true;
 					} else return false;
 				}
 			}
