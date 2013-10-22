@@ -4,6 +4,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 
+import komunikacja.Interfejs;
+
 public class Klient {
 
     public static void main(String[] args) {
