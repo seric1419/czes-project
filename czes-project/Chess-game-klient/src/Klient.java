@@ -4,7 +4,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 
-import komunikacja.Interfejs;
+import komunikacja.Komunikacja;
 
 public class Klient {
 
@@ -21,10 +21,10 @@ public class Klient {
             System.setSecurityManager(new RMISecurityManager());
         }
 
-        Interfejs interfejs = null;
+        Komunikacja interfejs = null;
 
         try {
-            interfejs = (Interfejs) Naming.lookup(nazwa);
+            interfejs = (Komunikacja) Naming.lookup(nazwa);
             String wynik = interfejs.obliczStara();
             System.out.println("Polaczono " + wynik);
         } catch (MalformedURLException e) {
