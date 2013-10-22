@@ -3,10 +3,10 @@ package komunikacja;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class InterfejsImpl extends UnicastRemoteObject implements Interfejs {
+public class KomunikacjaImpl extends UnicastRemoteObject implements Komunikacja {
 
 
-    public InterfejsImpl() throws RemoteException {
+    public KomunikacjaImpl() throws RemoteException {
         super(); 
     }
 

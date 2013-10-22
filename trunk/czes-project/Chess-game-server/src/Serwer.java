@@ -3,7 +3,7 @@ import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 
-import komunikacja.InterfejsImpl;
+import komunikacja.KomunikacjaImpl;
 
 public class Serwer {
 
@@ -16,7 +16,7 @@ public class Serwer {
 
         try {
 
-            InterfejsImpl impl = new InterfejsImpl();
+            KomunikacjaImpl impl = new KomunikacjaImpl();
 
             Naming.rebind(nazwa, impl);
         } catch (RemoteException e) {
