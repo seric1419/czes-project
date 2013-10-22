@@ -1,13 +1,13 @@
 package figury;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
+import java.io.Serializable;
 
-public abstract class Figura {
+public abstract class Figura implements Serializable{
+	
+	private static final long serialVersionUID = -7025810851788967103L;
 	protected Kolor kolor;
 	protected BufferedImage image;
-
-	public abstract ArrayList<Integer> mozliweRuchy(int x, int y);
 
 	public Figura(Kolor kolor) {
 		this.kolor = kolor;

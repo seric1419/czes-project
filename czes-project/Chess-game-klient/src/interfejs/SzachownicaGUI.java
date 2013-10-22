@@ -20,7 +20,7 @@ public class SzachownicaGUI extends JFrame{
 	/**
 	 * Create the frame.
 	 */
-	public SzachownicaGUI(String name) {
+	public SzachownicaGUI() {
 		super("Chess Client");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 840, 880);
@@ -30,7 +30,7 @@ public class SzachownicaGUI extends JFrame{
 		contentPane.setLayout(null);
 		
 		ustawFullScreen();
-		inicjalizujImiona(name);
+		inicjalizujImiona();
 	}
 	
 	private void ustawFullScreen(){
@@ -39,13 +39,13 @@ public class SzachownicaGUI extends JFrame{
 		setSize(850, getHeight());
 	}
 	
-	private void inicjalizujImiona(String name){
-		imieGracza1 = new JLabel(name);
+	private void inicjalizujImiona(){
+		imieGracza1 = new JLabel("Gracz1");
 		imieGracza1.setBounds(50, 835, 500, 20);
 		imieGracza1.setFont(new Font(imieGracza1.getFont().getName(), Font.BOLD, 20));
 		contentPane.add(imieGracza1);
 		
-		imieGracza2 = new JLabel(name);
+		imieGracza2 = new JLabel("Gracz2");
 		imieGracza2.setBounds(500, 5, 500, 20);
 		imieGracza2.setFont(new Font(imieGracza2.getFont().getName(), Font.BOLD, 20));
 		contentPane.add(imieGracza2);
@@ -61,5 +61,9 @@ public class SzachownicaGUI extends JFrame{
 
 	public void ustawImieGracza2(String imieGracza2) {
 		this.imieGracza2.setText(imieGracza2);
+	}
+	
+	public String pobierzImieGracza2(){
+		return imieGracza2.getText();
 	}
 }
