@@ -12,6 +12,7 @@ import figury.Hetman;
 import figury.Kolor;
 import figury.Krol;
 import figury.Pion;
+import figury.PustaFigura;
 import figury.Skoczek;
 import figury.Wieza;
 
@@ -27,8 +28,8 @@ public class Constants {
 	public static final BufferedImage BIALY_KON_OBRAZEK = getBialyKon();
 	public static final BufferedImage CZARNY_GONIEC_OBRAZEK = getCzarnyGoniec();
 	public static final BufferedImage BIALY_GONIEC_OBRAZEK = getBialyGoniec();
-	public static final BufferedImage CZARNA_KROLOWA_OBRAZEK = getCzarnaKrolowa();
-	public static final BufferedImage BIALA_KROLOWA_OBRAZEK = getBialaKrolowa();
+	public static final BufferedImage CZARNY_HETMAN_OBRAZEK = getCzarnaKrolowa();
+	public static final BufferedImage BIALA_HETMAN_OBRAZEK = getBialaKrolowa();
 	public static final BufferedImage CZARNY_KROL_OBRAZEK = getCzarnyKrol();
 	public static final BufferedImage BIALY_KROL_OBRAZEK = getBialyKrol();
 	
@@ -44,8 +45,9 @@ public class Constants {
 	public static final Krol BIALY_KROL = new Krol(Kolor.BIALY);
 	public static final Pion CZARNY_PION = new Pion(Kolor.CZARNY);
 	public static final Pion BIALY_PION = new Pion(Kolor.BIALY);
-	public static final Color BROWN = new Color(160, 82, 45);
+	public static final PustaFigura PUSTA_FIGURA = new PustaFigura();
 	
+	public static final Color BROWN = new Color(160, 82, 45);
 	public static final Color LIGHT_BROWN = new Color(245, 222, 179);
 	
 	private static BufferedImage getCzarnyPion(){

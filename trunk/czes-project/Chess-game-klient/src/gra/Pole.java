@@ -1,14 +1,17 @@
+package gra;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.Serializable;
 
 import javax.swing.BorderFactory;
 
 import interfejs.ImagePanel;
 import figury.Figura;
 
-public class Pole {
+public class Pole implements Serializable{
 
+	private static final long serialVersionUID = -7566188556025919518L;
 	private ImagePanel imagePanel;
 	private ZmianaWybranegoListener listener;
 	
@@ -61,8 +64,10 @@ public class Pole {
 		
 		@Override
 		public void mousePressed(MouseEvent e){
-			imagePanel.setWybrany(true);
-			listener.zmianaWybranegoPola(wspol_x, wspol_y);
+			if(Gra.getInstance().getGracz().getToken()){
+				imagePanel.setWybrany(true);
+				listener.zmianaWybranegoPola(wspol_x, wspol_y);
+			}
 		}
 	};
 	
