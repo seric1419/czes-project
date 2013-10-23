@@ -516,6 +516,15 @@ public class Szachownica {
 	}
 	
 	public boolean zamienPola(int startX, int startY, int koniecX, int koniecY, int idGracza) {
+		Kolor kolor = pobierzPole(startX, startY).pobierzFigure().pobierzKolor();
+		
+		if(idGracza == 1 && kolor == Kolor.CZARNY){
+			return false;
+		}
+		if(idGracza == 2 && kolor == Kolor.BIALY){
+			return false;
+		}
+		
 		int pozycja_1 = (startY-1) * 8 + startX-1;
 		int pozycja_2 = (koniecY-1) * 8 + koniecX-1;
 		
