@@ -1,9 +1,6 @@
 package gra;
-import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RMISecurityManager;
-import java.rmi.RemoteException;
 
 import komunikacja.Komunikacja;
 
@@ -25,6 +22,7 @@ public class Klient {
             komunikacja = (Komunikacja) Naming.lookup(nazwaSerwera);
             
             Gracz gracz = komunikacja.zaloguj(nazwaGracza);
+            Thread.sleep(1000);
             Gra.getInstance().setGracz(gracz);
             
             if(gracz.getId() == 1){
@@ -56,12 +54,8 @@ public class Klient {
             	
             	Szachownica.getInstance().ustawPola(komunikacja.pobierzPola());
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (NotBoundException e) {
-            e.printStackTrace();
+        } catch (Exception e){
+        	e.printStackTrace();
         }
     }
 }

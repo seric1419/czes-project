@@ -19,6 +19,7 @@ import figury.Wieza;
 public class Constants {
 
 	public static final int ILOSC_POL = 64;
+	public static final String PATH = "images/";
 	
 	public static final BufferedImage CZARNY_PION_OBRAZEK = getCzarnyPion();
 	public static final BufferedImage BIALY_PION_OBRAZEK = getBialyPion();
@@ -52,7 +53,7 @@ public class Constants {
 	
 	private static BufferedImage getCzarnyPion(){
 		try {
-			return ImageIO.read(new File("images\\czarny_pion.png"));
+			return ImageIO.read(new File(PATH + "czarny_pion.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -62,7 +63,7 @@ public class Constants {
 	
 	private static BufferedImage getBialyPion(){
 		try {
-			return ImageIO.read(new File("images\\bialy_pion.png"));
+			return ImageIO.read(new File(PATH + "bialy_pion.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -72,7 +73,7 @@ public class Constants {
 	
 	private static BufferedImage getCzarnaWieza(){
 		try {
-			return ImageIO.read(new File("images\\czarna_wieza.png"));
+			return ImageIO.read(new File(PATH + "czarna_wieza.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -82,7 +83,7 @@ public class Constants {
 	
 	private static BufferedImage getBialaWieza(){
 		try {
-			return ImageIO.read(new File("images\\biala_wieza.png"));
+			return ImageIO.read(new File(PATH + "biala_wieza.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -92,7 +93,7 @@ public class Constants {
 	
 	private static BufferedImage getCzarnyKon(){
 		try {
-			return ImageIO.read(new File("images\\czarny_kon.png"));
+			return ImageIO.read(new File(PATH + "czarny_kon.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -102,7 +103,7 @@ public class Constants {
 	
 	private static BufferedImage getBialyKon(){
 		try {
-			return ImageIO.read(new File("images\\bialy_kon.png"));
+			return ImageIO.read(new File(PATH + "bialy_kon.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -112,7 +113,7 @@ public class Constants {
 	
 	private static BufferedImage getCzarnyGoniec(){
 		try {
-			return ImageIO.read(new File("images\\czarny_goniec.png"));
+			return ImageIO.read(new File(PATH + "czarny_goniec.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -122,7 +123,7 @@ public class Constants {
 	
 	private static BufferedImage getBialyGoniec(){
 		try {
-			return ImageIO.read(new File("images\\bialy_goniec.png"));
+			return ImageIO.read(new File(PATH + "bialy_goniec.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -132,7 +133,7 @@ public class Constants {
 	
 	private static BufferedImage getCzarnaKrolowa(){
 		try {
-			return ImageIO.read(new File("images\\czarna_krolowa.png"));
+			return ImageIO.read(new File(PATH + "czarna_krolowa.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -142,7 +143,7 @@ public class Constants {
 	
 	private static BufferedImage getBialaKrolowa(){
 		try {
-			return ImageIO.read(new File("images\\biala_krolowa.png"));
+			return ImageIO.read(new File(PATH + "biala_krolowa.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -152,7 +153,7 @@ public class Constants {
 	
 	private static BufferedImage getCzarnyKrol(){
 		try {
-			return ImageIO.read(new File("images\\czarny_krol.png"));
+			return ImageIO.read(new File(PATH + "czarny_krol.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -162,7 +163,7 @@ public class Constants {
 	
 	private static BufferedImage getBialyKrol(){
 		try {
-			return ImageIO.read(new File("images\\bialy_krol.png"));
+			return ImageIO.read(new File(PATH + "bialy_krol.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
