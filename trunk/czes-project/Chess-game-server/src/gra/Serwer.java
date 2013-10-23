@@ -9,7 +9,7 @@ import komunikacja.KomunikacjaImpl;
 public class Serwer {
 
     public static void main(String[] args) {
-        String nazwa = "serwerek";
+        String nazwa = "rmi://150.254.79.83/serwerek";
 
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new RMISecurityManager());
