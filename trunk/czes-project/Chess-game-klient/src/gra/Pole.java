@@ -69,25 +69,31 @@ public class Pole implements Serializable{
 				imagePanel.setWybrany(true);
 				listener.zmianaWybranegoPola(wspol_x, wspol_y);
 				
-				while(!Gra.getInstance().getGracz().getToken()){
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
+				new Thread(){
 					
-					try {
-						Gra.getInstance().setGracz(Klient.komunikacja.pobierzGracza(Gra.getInstance().getGracz().getId()));
-					} catch (RemoteException e1) {
-						e1.printStackTrace();
+					public void run(){
+						while(!Gra.getInstance().getGracz().getToken()){
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e1) {
+								e1.printStackTrace();
+							}
+							
+							try {
+								Gra.getInstance().setGracz(Klient.komunikacja.pobierzGracza(Gra.getInstance().getGracz().getId()));
+							} catch (RemoteException e1) {
+								e1.printStackTrace();
+							}
+						}
+						
+						try {
+							Szachownica.getInstance().ustawPola(Klient.komunikacja.pobierzPola());
+						} catch (RemoteException e1) {
+							e1.printStackTrace();
+						}
 					}
-				}
+				}.start();
 				
-				try {
-					Szachownica.getInstance().ustawPola(Klient.komunikacja.pobierzPola());
-				} catch (RemoteException e1) {
-					e1.printStackTrace();
-				}
 			}
 		}
 	};
