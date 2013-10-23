@@ -133,7 +133,8 @@ public class Szachownica implements Pole.ZmianaWybranegoListener{
 	
 	public void ustawPola(List<Pole> pola){
 		for(Pole temp: pola){
-			pobierzPole(temp.pobierzX(), temp.pobierzY()).ustawFigure(getFigura(temp.pobierzFigure()));
+			Pole pole = pobierzPole(temp.pobierzX(), temp.pobierzY());
+			pole.ustawFigure(getFigura(temp.pobierzFigure()));
 		}
 	}
 	

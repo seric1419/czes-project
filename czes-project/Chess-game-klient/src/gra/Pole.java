@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.Serializable;
+import java.rmi.RemoteException;
 
 import javax.swing.BorderFactory;
 
@@ -67,6 +68,26 @@ public class Pole implements Serializable{
 			if(Gra.getInstance().getGracz().getToken()){
 				imagePanel.setWybrany(true);
 				listener.zmianaWybranegoPola(wspol_x, wspol_y);
+				
+				while(!Gra.getInstance().getGracz().getToken()){
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
+					
+					try {
+						Gra.getInstance().setGracz(Klient.komunikacja.pobierzGracza(Gra.getInstance().getGracz().getId()));
+					} catch (RemoteException e1) {
+						e1.printStackTrace();
+					}
+				}
+				
+				try {
+					Szachownica.getInstance().ustawPola(Klient.komunikacja.pobierzPola());
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				}
 			}
 		}
 	};
